@@ -1,15 +1,13 @@
-import { randomUUID } from "crypto";
+import { User } from "../entities/User";
+import { getMockUser } from "./../__mocks__/mockUser";
 import { UserService } from "./UserService";
 
 jest.mock("../repositories/UserRepository");
 const mockUserRepository = require("../repositories/UserRepository");
 
 describe("UserService", () => {
-  const mockUser = {
-    user_id: randomUUID(),
-    name: "valdir",
-    email: "valdir@alves.com",
-  };
+  const mockUser: User = getMockUser();
+
   const userService = new UserService({
     userRepository: mockUserRepository,
     name: "valdir",
